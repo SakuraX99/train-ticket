@@ -633,23 +633,28 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ts-delivery-mongo
+  name: ts-delivery-mysql
 spec:
   selector:
     matchLabels:
-      app: ts-delivery-mongo
+      app: ts-delivery-mysql
   replicas: 1
   template:
     metadata:
       labels:
-        app: ts-delivery-mongo
+        app: ts-delivery-mysql
     spec:
       containers:
-        - name: ts-delivery-mongo
-          image: mongo
+        - name: ts-delivery-mysql
+          image: mysql:5.7
           imagePullPolicy: IfNotPresent
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: ts-delivery-mysql
           ports:
-            - containerPort: 27017
+            - containerPort: 3306
           resources:
             requests:
               cpu: 50m
@@ -659,12 +664,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-delivery-mongo
+  name: ts-delivery-mysql
 spec:
   ports:
     - port: 27017
   selector:
-    app: ts-delivery-mongo
+    app: ts-delivery-mysql
 
 ---
 
