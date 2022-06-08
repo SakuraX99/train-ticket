@@ -296,23 +296,28 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ts-price-mongo
+  name: ts-price-mysql
 spec:
   selector:
     matchLabels:
-      app: ts-price-mongo
+      app: ts-price-mysql
   replicas: 1
   template:
     metadata:
       labels:
-        app: ts-price-mongo
+        app: ts-price-mysql
     spec:
       containers:
-        - name: ts-price-mongo
-          image: mongo
+        - name: ts-price-mysql
+          image: mysql:5.7
           imagePullPolicy: IfNotPresent
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: ts-price-mysql
           ports:
-            - containerPort: 27017
+            - containerPort: 3306
           resources:
             requests:
               cpu: 50m
@@ -596,23 +601,28 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ts-notification-mongo
+  name: ts-notification-mysql
 spec:
   selector:
     matchLabels:
-      app: ts-notification-mongo
+      app: ts-notification-mysql
   replicas: 1
   template:
     metadata:
       labels:
-        app: ts-notification-mongo
+        app: ts-notification-mysql
     spec:
       containers:
-        - name: ts-notification-mongo
-          image: mongo
+        - name: ts-notification-mysql
+          image: mysql:5.7
           imagePullPolicy: IfNotPresent
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: ts-notification-mysql
           ports:
-            - containerPort: 27017
+            - containerPort: 3306
           resources:
             requests:
               cpu: 50m
@@ -621,12 +631,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-notification-mongo
+  name: ts-notification-mysql
 spec:
   ports:
-    - port: 27017
+    - port: 3306
   selector:
-    app: ts-notification-mongo
+    app: ts-notification-mysql
 
 ---
 
@@ -667,7 +677,7 @@ metadata:
   name: ts-delivery-mysql
 spec:
   ports:
-    - port: 27017
+    - port: 3306
   selector:
     app: ts-delivery-mysql
 
@@ -842,12 +852,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-price-mongo
+  name: ts-price-mysql
 spec:
   ports:
-    - port: 27017
+    - port: 3306
   selector:
-    app: ts-price-mongo
+    app: ts-price-mysql
 
 ---
 

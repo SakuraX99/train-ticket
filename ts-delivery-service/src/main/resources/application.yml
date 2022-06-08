@@ -5,7 +5,8 @@ spring:
   application:
     name: ts-delivery-service
   datasource:
-    url: jdbc:mysql://ts-delivery-mysql:3306/ts-delivery-mysql
+    url: jdbc:mysql://10.176.122.80:31111/ts-delivery-mysql?useSSL=false
+#    url: jdbc:mysql://ts-delivery-mysql:3306/ts-delivery-mysql
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
