@@ -1,4 +1,8 @@
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos-0.nacos-headless.default.svc.cluster.local,nacos-1.nacos-headless.default.svc.cluster.local,nacos-2.nacos-headless.default.svc.cluster.local
   application:
     name: ts-consign-service
   data:
@@ -14,3 +18,6 @@ server:
 
 swagger:
   controllerPackage: consign.controller
+
+consign-price-service:
+  url: http://${CONSIGN_PRICE_SERVICE_HOST:ts-consign-price-service}:${CONSIGN_PRICE_SERVICE_PORT:16110}

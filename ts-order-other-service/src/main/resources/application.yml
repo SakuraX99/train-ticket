@@ -3,15 +3,21 @@ server:
   port: 12032  # HTTP (Tomcat) port
 
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos-0.nacos-headless.default.svc.cluster.local,nacos-1.nacos-headless.default.svc.cluster.local,nacos-2.nacos-headless.default.svc.cluster.local
   application:
     name: ts-order-other-service
-  data:
-    mongodb:
-      host: ts-order-other-mongo
-#      username: user
-#      password: ${MONGODB_PASSWORD}
-      database: ts
-      port: 27017
+  datasource:
+#    url: jdbc:mysql://10.176.122.80:32002/ts-order-other-mysql?useSSL=false
+    url: jdbc:mysql://ts-order-other-mysql:3306/ts-order-other-mysql?useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    jpa:
+      hibernate:
+        ddl-auto: update
 
 #  rabbitmq:
 #    host: rabbitmq
@@ -39,3 +45,6 @@ spring:
 
 swagger:
   controllerPackage: other.controller
+
+station-service:
+  url: http://${STATION_SERVICE_HOST:ts-station-service}:${STATION_SERVICE_PORT:12345}

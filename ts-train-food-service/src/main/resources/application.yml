@@ -1,0 +1,20 @@
+server:
+  port: 19999
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos-0.nacos-headless.default.svc.cluster.local,nacos-1.nacos-headless.default.svc.cluster.local,nacos-2.nacos-headless.default.svc.cluster.local
+  application:
+    name: ts-train-food-service
+  data:
+    mongodb:
+      host: ts-train-food-mongo
+#      username: user
+#      password: ${MONGODB_PASSWORD}
+      database: ts
+      port: 27017
+
+swagger:
+  controllerPackage: trainFood.controller
