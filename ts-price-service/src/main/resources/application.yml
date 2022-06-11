@@ -2,8 +2,7 @@ spring:
   application:
     name: ts-price-service
   datasource:
-    url: jdbc:mysql://10.176.122.80:31113/ts-price-mysql?useSSL=false
-    #    url: jdbc:mysql://ts-price-mysql:3306/ts-price-mysql
+    url: jdbc:mysql://ts-price-mysql:3306/ts-price-mysql?useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver

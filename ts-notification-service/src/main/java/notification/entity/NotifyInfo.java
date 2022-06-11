@@ -8,8 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.UUID;
 
 import lombok.Data;

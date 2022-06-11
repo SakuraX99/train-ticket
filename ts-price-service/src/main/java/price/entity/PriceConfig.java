@@ -1,5 +1,6 @@
 package price.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -9,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.UUID;
 
 /**
@@ -19,6 +19,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PriceConfig {
 
     @Id

@@ -20,7 +20,7 @@ import java.util.UUID;
 @Service
 public class PriceServiceImpl implements PriceService {
 
-    @Autowired
+    @Autowired(required=true)
     private PriceConfigRepository priceConfigRepository;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PriceServiceImpl.class);

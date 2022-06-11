@@ -1,7 +1,5 @@
 package price.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import price.entity.PriceConfig;
@@ -16,7 +14,6 @@ public interface PriceConfigRepository extends CrudRepository<PriceConfig, Strin
 
     PriceConfig findById(String id);
 
-    @Query("{ 'routeId': ?0 , 'trainType': ?1 }")
     PriceConfig findByRouteIdAndTrainType(String routeId,String trainType);
 
     @Override
