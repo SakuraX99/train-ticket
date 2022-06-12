@@ -24,7 +24,7 @@ spring:
             enable: true
             required: true
   datasource:
-    url: jdbc:mysql://ts-notification-mysql:3306/ts-notification-mysql?useSSL=false
+    url: jdbc:mysql://{NOTIFICATION_MYSQL_HOST:ts-notification-mysql}:{NOTIFICATION_MYSQL_PORT:3306}/ts-notification-mysql?useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
